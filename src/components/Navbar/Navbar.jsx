@@ -57,7 +57,7 @@ class Navbar extends Component {
 
     async componentDidUpdate(prevState) {
         if (prevState.tabvalue !== this.props.tabvalue) {
-            await this.setState({ tabVal: this.props.tabvalue });
+            this.setState({ tabVal: this.props.tabvalue });
         }
 
         document.onclick = (e) => {
@@ -175,7 +175,7 @@ class Navbar extends Component {
                                     <div style={{ width: '50px', height: '50px', backgroundColor: this.props.scolor, borderRadius: '50%', textAlign: 'center' }}><NightlightRoundIcon sx={{ fontSize: '24px', marginTop: '10px' }} /></div>
                                     <Typography variant='h6' sx={{ fontWeight: 'bolder', flex: 10, marginLeft: '20px' }}>Display & Accessibility</Typography>
                                     <FormControlLabel control={<Switch checked={this.state.switchvalue} onChange={async (e, newValue) => {
-                                        await this.setState({ switchvalue: newValue });
+                                        this.setState({ switchvalue: newValue });
                                         if (this.state.switchvalue === true) {
                                             this.props.setDarkTheme();
                                         }

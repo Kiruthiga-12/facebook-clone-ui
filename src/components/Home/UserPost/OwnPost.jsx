@@ -57,16 +57,16 @@ class OwnPost extends Component {
                                     <Typography variant='body1' sx={{ fontWeight: 'bold', marginLeft: '10px', color: this.props.tcolor }}>{localStorage.getItem('first_name') + ' ' + localStorage.getItem('last_name')}</Typography>
                                 </div>
                                 <textarea rows='7' placeholder={`Whats on your mind ${localStorage.getItem('first_name')}?`} style={{ width: '100%', marginTop: '20px', fontSize: '30px', height: '100px', border: 'none', outline: 'none', color: this.props.tcolor, backgroundColor: this.props.scolor, resize: 'none' }}
-                                    onInput={async (e) => {
-                                        await this.setState({ dialog_qs: e.target.value });
+                                    onInput={(e) => {
+                                        this.setState({ dialog_qs: e.target.value });
                                     }} minLength={10} maxLength={40}></textarea>
                                 <TextField label='Brand Image Url' type='text' variant='filled' color='success' sx={{ width: '100%', color: this.props.tcolor }}
-                                    onBlur={async (e) => {
-                                        await this.setState({ image_url: e.target.value });
+                                    onBlur={(e) => {
+                                        this.setState({ image_url: e.target.value });
                                     }} />
                                 <TextField label='Brand Name' type='text' variant='filled' color='secondary' sx={{ width: '100%', color: this.props.tcolor, marginTop: '30px' }}
-                                    onBlur={async (e) => {
-                                        await this.setState({ brand_name: e.target.value });
+                                    onBlur={(e) => {
+                                        this.setState({ brand_name: e.target.value });
                                     }} />
                             </DialogContentText>
                         </DialogContent>
@@ -75,9 +75,9 @@ class OwnPost extends Component {
                                 margin: 'auto', width: '200px', color: 'white',
                                 backgroundColor: 'blue', '&:hover': { backgroundColor: 'blue' }
                             }}
-                                onClick={async () => {
+                                onClick={() => {
                                     if (this.state.brand_name !== '' && this.state.image_url !== '' && this.state.dialog_qs !== '') {
-                                        await axios.post('https://kiruthiga-12-facebook-clone-api.onrender.com/api/posts', (
+                                        axios.post('https://kiruthiga-12-facebook-clone-api.onrender.com/api/posts', (
                                             {
                                                 "brand": this.state.brand_name,
                                                 "image": this.state.image_url,

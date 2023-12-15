@@ -10,9 +10,9 @@ class SharedLayout extends Component {
         }
     }
 
-    async componentDidUpdate(prevState) {
+    componentDidUpdate(prevState) {
         if (prevState.prop !== this.props.prop) {
-            await this.setState({ val: this.props.prop });
+            this.setState({ val: this.props.prop });
         }
     }
     render() {

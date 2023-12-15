@@ -35,7 +35,7 @@ class UserPost extends Component {
         }
     }
     async componentDidMount() {
-        await this.setState({ brand_name: this.props.posttitle, image_url: this.props.postimg, description: this.props.description });
+        this.setState({ brand_name: this.props.posttitle, image_url: this.props.postimg, description: this.props.description });
     }
 
     async componentDidUpdate() {
@@ -60,7 +60,7 @@ class UserPost extends Component {
                     </div>
                     <ListItemButton sx={{ display: 'inline' }} id='post_options'
                         onClick={async (e) => {
-                            await this.setState({ post_settings: !this.state.post_settings, client_x: e.clientX, client_y: e.clientY });
+                            this.setState({ post_settings: !this.state.post_settings, client_x: e.clientX, client_y: e.clientY });
                         }}><MoreHorizIcon sx={{ marginLeft: '250px' }} />
                     </ListItemButton>
                 </div>
@@ -121,8 +121,8 @@ class UserPost extends Component {
                                         <Typography variant='body1' sx={{ marginLeft: '10px' }}>Edit Post</Typography>
                                     </ListItemButton>
                                     <ListItemButton sx={{ marginTop: '20px', color: this.props.tcolor, display: 'flex', alignItems: 'center' }}
-                                        onClick={async () => {
-                                            await this.setState({ delete_flag: true });
+                                        onClick={() => {
+                                            this.setState({ delete_flag: true });
                                             if (window.confirm("Do you want to delete the post") === true) {
                                                 axios.delete(`https://kiruthiga-12-facebook-clone-api.onrender.com/api/posts/${this.props.postedtime}`)
                                                     .then(async (data) => {
@@ -157,16 +157,16 @@ class UserPost extends Component {
                                     <Typography variant='body1' sx={{ fontWeight: 'bold', marginLeft: '10px', color: this.props.tcolor }}>{this.props.posttitle}</Typography>
                                 </div>
                                 <textarea rows='7' style={{ width: '100%', marginTop: '20px', fontSize: '30px', height: '100px', border: 'none', outline: 'none', color: this.props.tcolor, backgroundColor: this.props.scolor, resize: 'none' }}
-                                    onInput={async (e) => {
-                                        await this.setState({ description: e.target.value });
+                                    onInput={(e) => {
+                                        this.setState({ description: e.target.value });
                                     }} minLength={10} maxLength={40}>{this.state.description}</textarea>
                                 <TextField label='Brand Image Url' type='text' variant='filled' color='success' sx={{ width: '100%', color: this.props.tcolor }}
-                                    onInput={async (e) => {
-                                        await this.setState({ image_url: e.target.value });
+                                    onInput={(e) => {
+                                        this.setState({ image_url: e.target.value });
                                     }} value={this.state.image_url} />
                                 <TextField label='Brand Name' type='text' variant='filled' color='secondary' sx={{ width: '100%', color: this.props.tcolor, marginTop: '30px' }}
-                                    onInput={async (e) => {
-                                        await this.setState({ brand_name: e.target.value });
+                                    onInput={(e) => {
+                                         this.setState({ brand_name: e.target.value });
                                     }} value={this.state.brand_name} />
                             </DialogContentText>
                         </DialogContent>

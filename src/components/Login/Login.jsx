@@ -53,26 +53,26 @@ class Login extends Component {
                                     if (this.state.login_email !== '' && this.state.login_pwd !== ''
                                         && this.state.login_email === localStorage.getItem('email') &&
                                         this.state.login_pwd === localStorage.getItem('password')) {
-                                        await this.setState({ login: true });
-                                        await this.setState({ login_redirect: '/home' });
+                                        this.setState({ login: true });
+                                        this.setState({ login_redirect: '/home' });
                                         localStorage.setItem('login_email', this.state.login_email);
                                         localStorage.setItem('login_pwd', this.state.login_pwd);
                                     }
                                     else if (this.state.login_email === '') {
                                         alert('Please fill  Email or mobile number!!!');
-                                        await this.setState({ login_redirect: '/' });
+                                        this.setState({ login_redirect: '/' });
                                     }
                                     else if (this.state.login_pwd === '') {
                                         alert('Please fill  password');
-                                        await this.setState({ login_redirect: '/' });
+                                        this.setState({ login_redirect: '/' });
                                     }
                                     else if (this.state.login_email !== localStorage.getItem('email')) {
                                         alert('Please fill correct Email Id or Mobile Number');
-                                        await this.setState({ login_redirect: '/' });
+                                        this.setState({ login_redirect: '/' });
                                     }
                                     else if (this.state.login_pwd !== localStorage.getItem('password')) {
                                         alert('Please fill the correct password');
-                                        await this.setState({ login_redirect: '/' });
+                                        this.setState({ login_redirect: '/' });
                                     }
                                 }}
                             >Log In</Button>
@@ -200,12 +200,12 @@ class Login extends Component {
                                             if (this.state.fname !== '' && this.state.lname !== '' && this.state.mobile_email !== ''
                                                 && this.state.pwd !== '' && this.state.day !== ''
                                                 && this.state.month !== '' && this.state.year !== '' && this.state.gender !== '') {
-                                                await this.setState({ signedin: true });
-                                                await localStorage.setItem('first_name', this.state.fname);
-                                                await localStorage.setItem('last_name', this.state.lname);
-                                                await localStorage.setItem('email', this.state.mobile_email);
-                                                await localStorage.setItem('password', this.state.pwd);
-                                                await alert('Redirecting to Login Page!!');
+                                                this.setState({ signedin: true });
+                                                localStorage.setItem('first_name', this.state.fname);
+                                                localStorage.setItem('last_name', this.state.lname);
+                                                localStorage.setItem('email', this.state.mobile_email);
+                                                localStorage.setItem('password', this.state.pwd);
+                                                alert('Redirecting to Login Page!!');
                                             }
                                             else {
                                                 alert('Please fill all the required fields to Sign Up!!!')
